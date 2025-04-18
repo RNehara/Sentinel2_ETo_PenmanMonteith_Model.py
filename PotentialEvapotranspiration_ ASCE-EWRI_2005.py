@@ -30,27 +30,32 @@ cdh = 0.24 # Constants related to grass during the day (hourly) (s / m)
 # ------------------------------------------------------------
 
     # This function requires Sentinel-2 L2A bands 2, 3, 4, 8, 11, and 12.
-    # Keep only the necessary bands in each directory.
     # dir: the directory (folder paths) where the images are stored.
     # output: the directory (folder paths) where the images should be exported
-    # It is recommended not to rename the bands or the metadata files in the folder.
+    # Do not rename the bands or the metadata files in the folder.
 
 # Define paths analysis
-dir10m = "C:/Users/nehar/OneDrive/Documentos/Sentinel_Article/Images/Image4/10m/"
-dir20m = "C:/Users/nehar/OneDrive/Documentos/Sentinel_Article/Images/Image4/20m/"
+dir10m = "path/to/Sentinel2/10m_bands/"
+dir20m = "path/to/Sentinel2/20m_bands/"
 
-output = "Downloads/"
+output = "path/to/output/folder/"
      
 # -------------- edition ends here ---------------------------
 
 
 print("------------------------------------------------------------")
 print('Uploading Sentinel-2 10m bands')
-# Find all .jp2 files in the 10m directory
+# List of expected band identifiers
+expected_10m_bands = ["B02", "B03", "B04", "B08"]
+
+# Find all .jp2 files in the directory
 jp2_files_10m = glob.glob(os.path.join(dir10m, "*.jp2"))
 
-# List of expected band names with leading zeros (matching real file names)
-expected_10m_bands = ["B02", "B03", "B04", "B08"]
+# Filter files that contain the desired band identifiers
+selected_files = [
+    f for f in jp2_files_10m 
+    if any(band in os.path.basename(f) for band in expected_10m_bands)
+]
 
 # Function to find the file path for a given band code
 def find_band_path(file_list, band_code):
@@ -73,13 +78,18 @@ print('It is done')
 print("------------------------------------------------------------")
 
 print('Uploading Sentinel-2 20m bands')
+# List of expected band identifiers
+expected_20m_bands = ["B11", "B12"]
+
 # Find all .jp2 files in the 20m directory
 jp2_files_20m = glob.glob(os.path.join(dir20m, "*.jp2"))
 
-# List of expected band names at 20m resolution (with leading zeros)
-expected_20m_bands = ["B11", "B12"]
-
-# Reuse the same helper function (already handles B01 format)
+# Filter files that contain the desired band identifiers
+selected_files_20m = [
+    f for f in jp2_files_20m 
+    if any(band in os.path.basename(f) for band in expected_20m_bands)
+]
+# Reuse the same helper function (already handles B11 format)
 def find_band_path(file_list, band_code):
     for path in file_list:
         filename = os.path.basename(path)
@@ -95,7 +105,6 @@ band_20m_paths = {
 # Print result for verification
 for band, path in band_20m_paths.items():
     print(f"{band} → {path}")
-
 print('It is done')
 print("------------------------------------------------------------")
 
@@ -360,4 +369,13 @@ for name, array in rasters.items():
         crs=ref_crs,               # Use original CRS (from reference band)
         transform=ref_transform # Use transform from original raster
     ) as dst:
-        dst.write(array, 1)
+        dst.write(array, 1)        
+
+
+# References    
+# ASCE-EWRI. The ASCE standardized reference evapotranspiration equation (2005).    
+# In: ALLEN RG et al. (eds.), Report 0-7844-0805-X St. Louis: American Society of Civil Engineers, Environmental Water Resources Institute, p. 1- 69.        
+# Allen, R. G., Pereira, L. S., Raes, D., & Smith, M. (1998).    
+# Crop evapotranspiration-Guidelines for computing crop water requirements-FAO Irrigation and drainage paper 56. Fao, Rome, 300(9), D05109.        
+# Bonafoni, S., & Sekertekin, A. (2020).    
+# Albedo retrieval from Sentinel-2 by new narrow-to-broadband conversion coefficients. IEEE Geoscience and remote sensing letters, 17(9), 1618-1622.
