@@ -7,7 +7,15 @@ This repository provides a Python script for estimating **daytime potential evap
 - Supports **NDVI** and **surface albedo** estimation from Sentinel-2 bands (Bonafoni & Sekertekin, 2020).
 - Resamples 20m bands (B11, B12) to 10m resolution for unified processing  
 - Exports raster outputs of PET, NDVI, and albedo  
-- Allows for interactive input of meteorological and geographic data from a weather station    
+- Allows for interactive input of meteorological and geographic data from a weather station
+
+**Required python packages**  
+import numpy as np  
+import os  
+import rasterio  
+from rasterio.enums import Resampling  
+import glob  
+from rasterio.warp import reproject    
 
 **Required Sentinel-2 Bands**  
 - B02, B03, B04, B08 (10m)  
