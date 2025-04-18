@@ -1,9 +1,9 @@
 # ======================================================================
 #                                        Rodrigo Nehara
 #                                        r.nehara@usp.br
-#                                        github
-#                                        11-21-2024 (mm/dd/yyyy)
-# ASCE-PM Model for PET estimation 
+#                                        https://github.com/RNehara
+#                                        04-17-2025 (mm/dd/yyyy)
+# ASCE-EWRI Model for PET estimation 
 # Also albedo and NDVI estimation
 # Sentinel-2 L2A image
 # running Python 3.x
