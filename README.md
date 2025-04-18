@@ -34,7 +34,7 @@ Elevation (m) – altitude of the weather station above sea level
 - `albedo.tif`: Surface albedo raster    
 
 **References**
-- Walter, I. A., Allen, R. G., Elliott, R., Jensen, M. E., Itenfisu, D., Mecham, B., ... & Martin, D. (2000). ASCE’s standardized reference evapotranspiration equation. Watershed management and operations management, 2000, 1-11.  
+- ASCE-EWRI. The ASCE standardized reference evapotranspiration equation (2005). In: ALLEN RG et al. (eds.), Report 0-7844-0805-X St. Louis: American Society of Civil Engineers, Environmental Water Resources Institute, p. 1- 69.
 - Allen, R. G., Pereira, L. S., Raes, D., & Smith, M. (1998). Crop evapotranspiration-Guidelines for computing crop water requirements-FAO Irrigation and drainage paper 56. Fao, Rome, 300(9), D05109.
 - Bonafoni, S., & Sekertekin, A. (2020). Albedo retrieval from Sentinel-2 by new narrow-to-broadband conversion coefficients. IEEE Geoscience and remote sensing letters, 17(9), 1618-1622.
 
