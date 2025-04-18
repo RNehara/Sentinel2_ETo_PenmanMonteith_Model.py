@@ -1,6 +1,6 @@
 # PET Estimation Using Sentinel-2 and ASCE-PM Method    
 
-This repository provides a Python script for estimating **daytime potential evapotranspiration (PET)** using the **Penman-Monteith ASCE** approach. It uses **Sentinel-2 L2A imagery** already with atmospheric and terrain correction and incorporates NDVI and surface albedo.    
+This repository provides a Python script for estimating **daytime potential evapotranspiration (PET)** using the **Penman-Monteith** method with **ASCE-PM** references values. It uses **Sentinel-2 L2A imagery** already with atmospheric and terrain correction and incorporates NDVI and surface albedo.    
 
 **Features**   
 - Calculates **potential evapotranspiration (PET)** using the ASCE-EWRI method (Allen et al., 1998; ASCE-EWRI, 2005)  
